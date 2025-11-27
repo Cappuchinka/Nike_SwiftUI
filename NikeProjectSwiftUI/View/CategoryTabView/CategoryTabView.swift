@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CategoryTabView: View {
     @State private var selectedTab = 0
-    let categoriesTabs = ["Men", "Women", "Kids"]
+    let categoriesTabs: [String] 
     
     var body: some View {
         VStack(spacing: 0) {
@@ -44,8 +44,4 @@ struct CategoryTabView: View {
                 .frame(height: 1)
         }
     }
-}
-
-#Preview {
-    CategoryTabView()
 }
