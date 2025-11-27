@@ -1,12 +1,19 @@
 import SwiftUI
 
-struct ItemScroll {
-    let label: String
-    let imageLabel: String
-}
-
 struct ShopView: View {
+    let categoriesTabs = ["Men", "Women", "Kids"]
     
+    let categories: [ItemScroll] = [
+        ItemScroll(label: "Best Sellers", imageLabel: "bestSellers"),
+        ItemScroll(label: "Featured In Nike Air", imageLabel: "featuredInNikeAir"),
+        ItemScroll(label: "Just Do It", imageLabel: "justDoIt"),
+    ]
+    
+    let sections: [ItemScroll] = [
+        ItemScroll(label: "New&Featured", imageLabel: "newFeatured"),
+        ItemScroll(label: "Shooes", imageLabel: "sectionShooes"),
+        ItemScroll(label: "Sales", imageLabel: "sales"),
+    ]
     
     var body: some View {
         VStack {
@@ -25,7 +32,7 @@ struct ShopView: View {
             .padding(.horizontal, 20)
 
             HStack {
-                CategoryTabView()
+                CategoryTabView(categoriesTabs: categoriesTabs)
             }
             .padding(.top, 32)
             
@@ -38,12 +45,12 @@ struct ShopView: View {
                         Spacer()
                     }
                     HStack {
-                        CategoryHScrollView()
+                        CategoryHScrollView(categories: categories, typeCard: "bottom", typeAlignment: "categories")
                     }
                     .padding(.top, 20)
                     
                     VStack(spacing: 5) {
-                        SectionList()
+                        SectionList(sections: sections)
                     }
                     .padding(.top, 20)
                     

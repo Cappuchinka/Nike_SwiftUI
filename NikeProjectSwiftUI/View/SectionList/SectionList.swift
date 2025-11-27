@@ -9,11 +9,7 @@ import SwiftUI
 
 struct SectionList: View {
     
-    let sections: [ItemScroll] = [
-        ItemScroll(label: "New&Featured", imageLabel: "newFeatured"),
-        ItemScroll(label: "Shooes", imageLabel: "sectionShooes"),
-        ItemScroll(label: "Sales", imageLabel: "sales"),
-    ]
+    let sections: [ItemScroll]
         
     var body: some View {
         VStack() {
@@ -47,8 +43,4 @@ struct SectionView: View {
         }
         .frame(height: 111)
     }
-}
-
-#Preview {
-    SectionList()
 }
