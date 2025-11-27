@@ -53,7 +53,7 @@ struct GreetingView: View {
                     .padding()
                     
                     HStack (spacing: 16) {
-                        NavigationLink(destination: ShopView()) {
+                        NavigationLink(destination: OnBoardingView()) {
                             Text("Join Us")
                                 .font(.custom("Inter", size: 20))
                                 .foregroundColor(Color.black)
@@ -63,7 +63,7 @@ struct GreetingView: View {
                                 .cornerRadius(25)
                         }
                         
-                        NavigationLink(destination: ShopView()) {
+                        NavigationLink(destination: OnBoardingView()) {
                             Text("Sign In")
                                 .font(.custom("Inter", size: 20))
                                 .foregroundColor(Color.white)
