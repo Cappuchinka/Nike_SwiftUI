@@ -39,7 +39,6 @@ struct SectionView: View {
                 .fontWeight(.semibold)
                 .foregroundColor(.white)
                 .padding(.leading, 20)
-                .frame(height: .infinity)
         }
         .frame(height: 111)
     }

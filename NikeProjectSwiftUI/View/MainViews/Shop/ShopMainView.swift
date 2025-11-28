@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct ShopView: View {
+struct ShopMainView: View {
     let categoriesTabs = ["Men", "Women", "Kids"]
     
     let categories: [ItemScroll] = [
@@ -70,5 +70,5 @@ struct ShopView: View {
 
 
 #Preview {
-    ShopView()
+    ShopMainView()
 }
