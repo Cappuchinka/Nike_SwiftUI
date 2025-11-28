@@ -33,29 +33,32 @@ struct HomeView: View {
                     .fontWeight(.regular)
                     .foregroundColor(.addInterest)
             }
+            .padding(.horizontal, 20)
             ScrollView {
-                HStack {
-                    CategoryHScrollView(categories: categories, typeCard: "onImage", typeAlignment: "categories")
-                }
-                .padding(.top, 25)
-                
-                HStack {
-                    Text("Recommended for You")
-                        .font(.custom("Inter", size: 21))
-                        .fontWeight(.medium)
+                VStack {
+                    HStack {
+                        CategoryHScrollView(categories: categories, typeCard: "onImage", typeAlignment: "categories")
+                    }
+                    .padding(.top, 25)
+                    
+                    HStack {
+                        Text("Recommended for You")
+                            .font(.custom("Inter", size: 21))
+                            .fontWeight(.medium)
+                        Spacer()
+                    }
+                    .padding(.top, 77)
+                    
+                    HStack {
+                        CategoryHScrollView(categories: snickers, typeCard: "bottom", typeAlignment: "snickers")
+                    }
+                    .padding(.top, 15)
                     Spacer()
                 }
-                .padding(.top, 77)
-                
-                HStack {
-                    CategoryHScrollView(categories: snickers, typeCard: "bottom", typeAlignment: "snickers")
-                }
-                .padding(.top, 15)
-                Spacer()
+                .padding(.horizontal, 20)
             }
             
         }
-        .padding(.horizontal, 20)
         .padding(.top, 20)
     }
 }

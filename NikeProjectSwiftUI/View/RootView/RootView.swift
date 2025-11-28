@@ -13,8 +13,11 @@ struct RootView: View {
             HomeView().tabItem {
                 Label("Home", systemImage: "house")
             }
-            ShopView().tabItem {
+            ShopMainView().tabItem {
                 Label("Shop", systemImage: "magnifyingglass")
+            }
+            ProfileView().tabItem {
+                Label("Profile", systemImage: "person")
             }
         }
         .navigationBarBackButtonHidden(true)

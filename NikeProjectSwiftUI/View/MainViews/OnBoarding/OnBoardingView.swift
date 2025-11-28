@@ -47,7 +47,7 @@ struct OnBoardingView: View {
                         .resizable()
                         .scaledToFit()
                         .cornerRadius(8)
-                }.frame(width: .infinity)
+                }
                 VStack(alignment: .leading, spacing: 12) {
                     Image("ob_01")
                         .resizable()
