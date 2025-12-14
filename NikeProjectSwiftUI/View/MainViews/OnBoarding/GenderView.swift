@@ -81,7 +81,7 @@ struct GenderView: View {
 
                 Spacer()
 
-                NavigationLink(destination: RootView()) {
+                NavigationLink(destination: TypesOfSportView()) {
                     Text("Next")
                         .font(.custom("Inter", size: 20))
                         .foregroundColor(Color.black)
@@ -96,6 +96,7 @@ struct GenderView: View {
             .padding(.horizontal, 20)
 
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 
