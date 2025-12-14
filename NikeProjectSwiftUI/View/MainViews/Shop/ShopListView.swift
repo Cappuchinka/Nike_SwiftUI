@@ -26,6 +26,7 @@ struct ShopListView: View {
         .onAppear {
             viewModel.fetchData()
         }
+        .navigationTitle(Text("Shop"))
     }
 }
 

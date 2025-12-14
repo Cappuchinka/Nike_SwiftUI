@@ -45,7 +45,12 @@ struct ShopMainView: View {
                         Spacer()
                     }
                     HStack {
-                        CategoryHScrollView(categories: categories, typeCard: "bottom", typeAlignment: "categories")
+                        CategoryHScrollView(
+                            categories: categories,
+                            typeCard: "bottom",
+                            typeAlignment: "categories",
+                            withNavigation: true
+                        )
                     }
                     .padding(.top, 20)
                     
