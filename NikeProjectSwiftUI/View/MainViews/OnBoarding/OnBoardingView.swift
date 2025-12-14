@@ -63,7 +63,7 @@ struct OnBoardingView: View {
 
             VStack(alignment: .center) {
                 VStack(alignment: .leading) {
-                    ProgressView(value: 0.5, total: 1.0)
+                    ProgressView(value: 0.25, total: 1.0)
                         .progressViewStyle(.linear)
                         .tint(.white)
                         .padding(.horizontal, 100)
