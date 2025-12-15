@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct OnBoardingView: View {
+
+    let onComplete: () -> Void
+
     var body: some View {
         ZStack {
             Rectangle()
@@ -82,7 +85,7 @@ struct OnBoardingView: View {
 
                 Spacer()
 
-                NavigationLink(destination: GenderView()) {
+                NavigationLink(destination: GenderView(onComplete: onComplete)) {
                     Text("Get Started")
                         .font(.custom("Inter", size: 20))
                         .foregroundColor(Color.black)
@@ -128,5 +131,5 @@ struct OnBoardingView: View {
 }
 
 #Preview {
-    OnBoardingView()
+    OnBoardingView(onComplete: {})
 }

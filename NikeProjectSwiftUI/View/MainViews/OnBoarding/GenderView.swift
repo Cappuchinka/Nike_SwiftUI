@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct GenderView: View {
+
+    let onComplete: () -> Void
+
     let adults: [TableRow] = [
         TableRow(imageName: "mens", title: "Mens"),
         TableRow(imageName: "womens", title: "Womens"),
@@ -81,7 +84,7 @@ struct GenderView: View {
 
                 Spacer()
 
-                NavigationLink(destination: TypesOfSportView()) {
+                NavigationLink(destination: TypesOfSportView(onComplete: onComplete)) {
                     Text("Next")
                         .font(.custom("Inter", size: 20))
                         .foregroundColor(Color.black)
@@ -101,5 +104,5 @@ struct GenderView: View {
 }
 
 #Preview {
-    GenderView()
+    GenderView(onComplete: {})
 }
