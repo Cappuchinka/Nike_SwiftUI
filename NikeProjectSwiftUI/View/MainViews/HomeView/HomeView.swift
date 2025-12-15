@@ -37,7 +37,11 @@ struct HomeView: View {
             ScrollView {
                 VStack {
                     HStack {
-                        CategoryHScrollView(categories: categories, typeCard: "onImage", typeAlignment: "categories")
+                        CategoryHScrollView(
+                            categories: categories,
+                            typeCard: "onImage",
+                            typeAlignment: "categories"
+                        )
                     }
                     .padding(.top, 25)
                     

@@ -11,7 +11,7 @@ import SwiftUI
 struct NikeProjectSwiftUIApp: App {
     var body: some Scene {
         WindowGroup {
-            GreetingView()
+            StartView()
         }
     }
 }

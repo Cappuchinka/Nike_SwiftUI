@@ -10,13 +10,19 @@ import SwiftUI
 struct RootView: View {
     var body: some View {
         TabView {
-            HomeView().tabItem {
+            NavigationStack {
+                HomeView()
+            }.tabItem {
                 Label("Home", systemImage: "house")
             }
-            ShopMainView().tabItem {
+            NavigationStack {
+                ShopMainView()
+            }.tabItem {
                 Label("Shop", systemImage: "magnifyingglass")
             }
-            ProfileView().tabItem {
+            NavigationStack {
+                ProfileView()
+            }.tabItem {
                 Label("Profile", systemImage: "person")
             }
         }

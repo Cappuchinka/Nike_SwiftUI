@@ -9,6 +9,8 @@ import SwiftUI
 
 struct TypesOfSportView: View {
 
+    let onComplete: () -> Void
+
     let sports: [TableRow] = [
         TableRow(imageName: "airMax", title: "Air Max"),
         TableRow(imageName: "baseball", title: "Baseball"),
@@ -51,7 +53,7 @@ struct TypesOfSportView: View {
 
                 Spacer()
 
-                NavigationLink(destination: RootView()) {
+                Button(action: onComplete) {
                     Text("Next")
                         .font(.custom("Inter", size: 20))
                         .foregroundColor(Color.black)
@@ -70,5 +72,5 @@ struct TypesOfSportView: View {
 }
 
 #Preview {
-    TypesOfSportView()
+    TypesOfSportView(onComplete: {})
 }
