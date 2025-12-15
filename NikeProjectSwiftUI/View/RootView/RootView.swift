@@ -21,6 +21,11 @@ struct RootView: View {
                 Label("Shop", systemImage: "magnifyingglass")
             }
             NavigationStack {
+                FavouritesView()
+            }.tabItem {
+                Label("Favourites", systemImage: "heart")
+            }
+            NavigationStack {
                 ProfileView()
             }.tabItem {
                 Label("Profile", systemImage: "person")
