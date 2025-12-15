@@ -26,6 +26,11 @@ struct RootView: View {
                 Label("Favourites", systemImage: "heart")
             }
             NavigationStack {
+                BagView()
+            }.tabItem {
+                Label("bag", systemImage: "bag")
+            }
+            NavigationStack {
                 ProfileView()
             }.tabItem {
                 Label("Profile", systemImage: "person")
