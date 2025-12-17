@@ -12,6 +12,8 @@ struct ProductCardView: View {
 
     let product: Product
 
+    @StateObject private var favoritesManager = FavoritesManager.shared
+
     var body: some View {
         VStack (spacing: 5) {
             ZStack {
@@ -39,20 +41,19 @@ struct ProductCardView: View {
                                     .foregroundColor(.white)
                                     .frame(width: 28, height: 28)
 
-                                Image(systemName: "suit.heart")
-                                    .frame(width: 14, height: 14)
-                                    .foregroundColor(.black)
+                                Image(systemName: favoritesManager.isFavorite(product) ? "heart.fill" : "suit.heart")
+                                   .frame(width: 14, height: 14)
+                                   .foregroundColor(.black)
 
-                                Image(systemName: "heart.fill")
-                                    .frame(width: 14, height: 14)
-                                  .opacity(0)
-                                //  .scaleEffect(productPreview.liked ? 1.0 : 0.1)
-                                    .animation(.linear, value: 1.0)
-                                    .foregroundColor(.white)
+                                if favoritesManager.isFavorite(product) {
+                                   Image(systemName: "heart.fill")
+                                       .frame(width: 14, height: 14)
+                                       .foregroundColor(.black)
+                                       .scaleEffect(1.2)
+                                       .transition(.scale)
+                                }
                             }
                         }
-//                        .disabled(likeReqInProgress)
-
                     }
                     .padding([.leading, .trailing, .top], 4)
 
@@ -103,6 +104,6 @@ struct ProductCardView: View {
     }
 
     private func onTapBtn() -> Void {
-        print("Tap")
+        favoritesManager.toggleFavorite(product)
     }
 }
