@@ -8,21 +8,44 @@
 import Foundation
 import Combine
 
-let productAPIURLString = "https://raw.githubusercontent.com/Cappuchinka/NikeSwiftUIServerData/refs/heads/master/json_data";
+let host = "https://raw.githubusercontent.com/Cappuchinka/NikeSwiftUIServerData/refs/heads/master/";
 
 class ProductViewModel: ObservableObject {
     @Published var products: [Product] = []
     @Published var isLoading = false
     @Published var errorMessage: String?
 
-    func fetchData() {
-        guard let url = URL(string: productAPIURLString) else {
+    private var cachedProducts: [Int: [Product]] = [:]
+    private var currentIndex: Int?
+
+    let urls = [
+        "all_json_data.json",
+        "hoodies_json_data.json",
+        "tops_json_data.json",
+        "pants_json_data.json",
+        "shoes_json_data.json",
+        "accessories_json_data.json",
+    ]
+
+    func fetchData(index: Int) {
+        if isLoading && currentIndex == index {
+            return
+        }
+
+        if let cached = cachedProducts[index] {
+            self.products = cached
+            self.currentIndex = index
+            return
+        }
+
+        guard let url = URL(string: host + urls[index]) else {
             errorMessage = "Некорректный URL"
             return
         }
 
         isLoading = true
         errorMessage = nil
+        currentIndex = index
 
         URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
             DispatchQueue.main.async {
@@ -41,6 +64,7 @@ class ProductViewModel: ObservableObject {
                 do {
                     let decodedData = try JSONDecoder().decode([Product].self, from: data)
                     self?.products = decodedData
+                    self?.cachedProducts[index] = decodedData
                 } catch {
                     self?.errorMessage = "Ошибка декодирования: \(error.localizedDescription)"
                 }
