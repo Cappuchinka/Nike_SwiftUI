@@ -15,21 +15,25 @@ struct RootView: View {
             }.tabItem {
                 Label("Home", systemImage: "house")
             }
+
             NavigationStack {
                 ShopMainView()
             }.tabItem {
                 Label("Shop", systemImage: "magnifyingglass")
             }
+
             NavigationStack {
                 FavouritesView()
             }.tabItem {
                 Label("Favourites", systemImage: "heart")
             }
+
             NavigationStack {
                 BagView()
             }.tabItem {
                 Label("bag", systemImage: "bag")
             }
+            
             NavigationStack {
                 ProfileView()
             }.tabItem {
