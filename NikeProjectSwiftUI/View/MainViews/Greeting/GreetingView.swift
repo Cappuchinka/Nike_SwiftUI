@@ -4,6 +4,8 @@ struct GreetingView: View {
 
     let onComplete: () -> Void
 
+    @State private var showSafari = false
+
     var body: some View {
         ZStack {
             Image("greetingBackgroundImage")
@@ -65,7 +67,9 @@ struct GreetingView: View {
                             .cornerRadius(25)
                     }
 
-                    NavigationLink(destination: OnBoardingView(onComplete: onComplete)) {
+                    Button(action: {
+                        showSafari = true
+                    }) {
                         Text("Sign In")
                             .font(.custom("Inter", size: 20))
                             .foregroundColor(Color.white)
@@ -77,6 +81,7 @@ struct GreetingView: View {
                                     .stroke(Color.white, lineWidth: 2)
                             )
                             .cornerRadius(25)
+
                     }
                 }
                 .padding(.top, 16)
@@ -86,9 +91,15 @@ struct GreetingView: View {
             .padding(.top, 300)
             .padding(.leading, -59)
         }
+        .sheet(isPresented: $showSafari) {
+            LoginView(
+                url: URL(string: "https://www.nike.com/register")!
+            )
+        }
     }
 }
 
 #Preview {
     GreetingView(onComplete: {})
 }
+
