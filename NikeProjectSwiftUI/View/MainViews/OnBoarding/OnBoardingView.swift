@@ -66,7 +66,7 @@ struct OnBoardingView: View {
 
             VStack(alignment: .center) {
                 VStack(alignment: .leading) {
-                    ProgressView(value: 0.25, total: 1.0)
+                    ProgressView(value: 0.2, total: 1.0)
                         .progressViewStyle(.linear)
                         .tint(.white)
                         .padding(.horizontal, 100)
@@ -85,7 +85,7 @@ struct OnBoardingView: View {
 
                 Spacer()
 
-                NavigationLink(destination: GenderView(onComplete: onComplete)) {
+                NavigationLink(destination: OnBoardingTextView(onComplete: onComplete)) {
                     Text("Get Started")
                         .font(.custom("Inter", size: 20))
                         .foregroundColor(Color.black)

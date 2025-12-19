@@ -15,9 +15,6 @@ struct TableRowView: View {
     var body: some View {
         Button(action: onTap) {
             ZStack {
-                Rectangle()
-                    .fill(Color.black)
-                    .frame(height: 80)
                 HStack {
                     Circle()
                         .fill(Color.white)

@@ -94,7 +94,7 @@ struct GenderView: View {
             .padding(.horizontal, 20)
 
             VStack {
-                ProgressView(value: 0.5, total: 1.0)
+                ProgressView(value: 0.6, total: 1.0)
                     .progressViewStyle(.linear)
                     .tint(.white)
                     .padding(.horizontal, 100)

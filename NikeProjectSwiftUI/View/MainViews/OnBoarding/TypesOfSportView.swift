@@ -28,7 +28,10 @@ struct TypesOfSportView: View {
     var body: some View {
         ZStack {
             Rectangle()
-                .fill(.black)
+                .overlay(
+                    Image("typesBackground")
+                        .resizable()
+                )
                 .ignoresSafeArea()
 
             ScrollView(.vertical) {
@@ -58,7 +61,7 @@ struct TypesOfSportView: View {
             }
 
             VStack {
-                ProgressView(value: 0.75, total: 1.0)
+                ProgressView(value: 0.8, total: 1.0)
                     .progressViewStyle(.linear)
                     .tint(.white)
                     .padding(.horizontal, 100)
