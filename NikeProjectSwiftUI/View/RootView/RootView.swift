@@ -8,34 +8,47 @@
 import SwiftUI
 
 struct RootView: View {
+    @State private var selectedTab = 0
+
     var body: some View {
-        TabView {
+        TabView(selection: $selectedTab) {
             NavigationStack {
                 HomeView()
             }.tabItem {
-                Label("Home", systemImage: "house")
+                Label("Home", image: selectedTab == 0 ? "homeTab" : "nHomeTab")
             }
+            .tag(0)
+
             NavigationStack {
                 ShopMainView()
             }.tabItem {
-                Label("Shop", systemImage: "magnifyingglass")
+                Label("Shop", image: selectedTab == 1 ? "shopTab" : "nShopTab")
             }
+            .tag(1)
+
             NavigationStack {
                 FavouritesView()
             }.tabItem {
-                Label("Favourites", systemImage: "heart")
+                Label("Favourites", image: selectedTab == 2 ? "favouritesTab" : "nFavouritesTab")
             }
+            .tag(2)
+
             NavigationStack {
                 BagView()
             }.tabItem {
-                Label("bag", systemImage: "bag")
+                Label("bag", image: selectedTab == 3 ? "bagTab" : "nBagTab")
             }
+            .tag(3)
+
             NavigationStack {
                 ProfileView()
             }.tabItem {
-                Label("Profile", systemImage: "person")
+                Label("Profile", image: selectedTab == 4 ? "profileTab" : "nProfileTab")
             }
+            .tag(4)
+
         }
+        .accentColor(Color(.black))
         .navigationBarBackButtonHidden(true)
     }
 }
