@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct GenderView: View {
-
     let onComplete: () -> Void
 
     let adults: [TableRow] = [
@@ -21,6 +20,8 @@ struct GenderView: View {
         TableRow(imageName: "girls", title: "Girls"),
     ]
 
+    @State private var selectedAdultIndex: Int? = nil
+    @State private var selectedChildrenIndices: Set<Int> = []
 
     var body: some View {
         ZStack {
@@ -44,7 +45,13 @@ struct GenderView: View {
                 .padding(.bottom, 24)
 
                 ForEach(0..<adults.count, id: \.self) { index in
-                    TableRowView(tableRow: adults[index])
+                    TableRowView(
+                        tableRow: adults[index],
+                        isSelected: selectedAdultIndex == index,
+                        onTap: {
+                            selectedAdultIndex = index
+                        }
+                    )
                     if index != adults.count - 1 {
                         Rectangle()
                             .fill(Color.gray)
@@ -55,9 +62,9 @@ struct GenderView: View {
 
                 HStack {
                     Text("Any others?")
-                    .font(.custom("Inter", size: 30))
-                    .fontWeight(.medium)
-                    .foregroundColor(.gray)
+                        .font(.custom("Inter", size: 30))
+                        .fontWeight(.medium)
+                        .foregroundColor(.gray)
 
                     Spacer()
                 }
@@ -65,7 +72,17 @@ struct GenderView: View {
                 .padding(.bottom, 24)
 
                 ForEach(0..<children.count, id: \.self) { index in
-                    TableRowView(tableRow: children[index])
+                    TableRowView(
+                        tableRow: children[index],
+                        isSelected: selectedChildrenIndices.contains(index),
+                        onTap: {
+                            if selectedChildrenIndices.contains(index) {
+                                selectedChildrenIndices.remove(index)
+                            } else {
+                                selectedChildrenIndices.insert(index)
+                            }
+                        }
+                    )
                     if index != children.count - 1 {
                         Rectangle()
                             .fill(Color.gray)
@@ -87,17 +104,17 @@ struct GenderView: View {
                 NavigationLink(destination: TypesOfSportView(onComplete: onComplete)) {
                     Text("Next")
                         .font(.custom("Inter", size: 20))
-                        .foregroundColor(Color.black)
+                        .foregroundColor(selectedAdultIndex != nil ? Color.black : Color.gray)
                         .frame(maxWidth: .infinity)
                         .frame(height: 55)
                         .clipShape(Capsule())
-                        .background(Color.white)
+                        .background(selectedAdultIndex != nil ? Color.white : Color.white.opacity(0.3))
                         .cornerRadius(30)
                         .padding(.horizontal, 110)
                 }
+                .disabled(!(selectedAdultIndex != nil))
             }
             .padding(.horizontal, 20)
-
         }
         .navigationBarBackButtonHidden(true)
     }

@@ -23,6 +23,8 @@ struct TypesOfSportView: View {
         TableRow(imageName: "nikeSportswear", title: "Nike Sportswear"),
     ]
 
+    @State private var selectedSportsIndeces: Set<Int> = []
+
     var body: some View {
         ZStack {
             Rectangle()
@@ -32,7 +34,17 @@ struct TypesOfSportView: View {
             ScrollView(.vertical) {
                 VStack {
                     ForEach(0..<sports.count, id: \.self) { index in
-                        TableRowView(tableRow: sports[index])
+                        TableRowView(
+                            tableRow: sports[index],
+                            isSelected: selectedSportsIndeces.contains(index),
+                            onTap: {
+                                if selectedSportsIndeces.contains(index) {
+                                    selectedSportsIndeces.remove(index)
+                                } else {
+                                    selectedSportsIndeces.insert(index)
+                                }
+                            }
+                        )
                         if index != sports.count - 1 {
                             Rectangle()
                                 .fill(Color.gray)
