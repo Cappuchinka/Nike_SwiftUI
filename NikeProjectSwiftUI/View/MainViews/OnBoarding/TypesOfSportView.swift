@@ -61,7 +61,7 @@ struct TypesOfSportView: View {
             }
 
             VStack {
-                ProgressView(value: 0.8, total: 1.0)
+                ProgressView(value: 1.0, total: 1.0)
                     .progressViewStyle(.linear)
                     .tint(.white)
                     .padding(.horizontal, 100)

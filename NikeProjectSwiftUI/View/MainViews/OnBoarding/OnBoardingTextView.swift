@@ -52,7 +52,7 @@ struct OnBoardingTextView: View {
                 Spacer()
 
                 VStack {
-                    NavigationLink(destination: GenderView(onComplete: onComplete)) {
+                    NavigationLink(destination: OnBoardingShoesSizesView(onComplete: onComplete)) {
                         Text("Next")
                             .font(.custom("Inter", size: 20))
                             .foregroundColor(Color.black)
