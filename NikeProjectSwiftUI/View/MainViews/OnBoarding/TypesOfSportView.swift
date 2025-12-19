@@ -23,16 +23,31 @@ struct TypesOfSportView: View {
         TableRow(imageName: "nikeSportswear", title: "Nike Sportswear"),
     ]
 
+    @State private var selectedSportsIndeces: Set<Int> = []
+
     var body: some View {
         ZStack {
             Rectangle()
-                .fill(.black)
+                .overlay(
+                    Image("typesBackground")
+                        .resizable()
+                )
                 .ignoresSafeArea()
 
             ScrollView(.vertical) {
                 VStack {
                     ForEach(0..<sports.count, id: \.self) { index in
-                        TableRowView(tableRow: sports[index])
+                        TableRowView(
+                            tableRow: sports[index],
+                            isSelected: selectedSportsIndeces.contains(index),
+                            onTap: {
+                                if selectedSportsIndeces.contains(index) {
+                                    selectedSportsIndeces.remove(index)
+                                } else {
+                                    selectedSportsIndeces.insert(index)
+                                }
+                            }
+                        )
                         if index != sports.count - 1 {
                             Rectangle()
                                 .fill(Color.gray)
@@ -46,7 +61,7 @@ struct TypesOfSportView: View {
             }
 
             VStack {
-                ProgressView(value: 0.75, total: 1.0)
+                ProgressView(value: 1.0, total: 1.0)
                     .progressViewStyle(.linear)
                     .tint(.white)
                     .padding(.horizontal, 100)
